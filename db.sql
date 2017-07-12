@@ -45,7 +45,8 @@ CREATE
 			"discount" real NOT NULL,
 			"price" real NOT NULL,
 			"pos_order_id" integer NOT NULL REFERENCES "pos_order"("pos_base_ptr_id"),
-			"pos_product_id" integer NOT NULL REFERENCES "pos_product"("pos_base_ptr_id")
+			"pos_product_id" integer NOT NULL REFERENCES "pos_product"("pos_base_ptr_id"),
+			"pos_unit_id" integer NOT NULL REFERENCES "pos_unit"("pos_base_ptr_id")
 		);
 
 CREATE
@@ -90,4 +91,13 @@ CREATE
 		"pos_tag"(
 			"pos_base_ptr_id" integer NOT NULL PRIMARY KEY REFERENCES "pos_base"("id"),
 			"name" varchar(40) NOT NULL UNIQUE
+		);
+
+CREATE
+	TABLE
+		"pos_unit"(
+			"pos_base_ptr_id" integer NOT NULL PRIMARY KEY REFERENCES "pos_base"("id"),
+			"name" varchar(40) NOT NULL,
+			"factor" real NOT NULL,
+			"pos_product_id" integer NOT NULL REFERENCES "pos_product"("pos_base_ptr_id")
 		);
