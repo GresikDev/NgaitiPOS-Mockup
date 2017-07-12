@@ -83,7 +83,8 @@ CREATE
 			"pos_base_ptr_id" integer NOT NULL PRIMARY KEY REFERENCES "pos_base"("id"),
 			"qty" real NOT NULL,
 			"pos_order_line_id" integer NULL REFERENCES "pos_orderline"("pos_base_ptr_id"),
-			"pos_product_id" integer NOT NULL REFERENCES "pos_product"("pos_base_ptr_id")
+			"pos_product_id" integer NOT NULL REFERENCES "pos_product"("pos_base_ptr_id"),
+			"pos_unit_id" integer NOT NULL REFERENCES "pos_unit"("pos_base_ptr_id")
 		);
 
 CREATE
